@@ -23,7 +23,7 @@ DisableProgramGroupPage=yes
 LicenseFile=
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
 ;PrivilegesRequired=lowest
-OutputDir=C:\Users\bubi\Downloads\Output
+OutputDir=D:\Output
 OutputBaseFilename=Novetat_server_Setup
 SetupIconFile=D:\CodeBlocksProjets\novetat_server\icons\icon.ico
 Compression=lzma
