@@ -55,6 +55,7 @@ void cleaner(gpointer data)
     app* application = data;
 
     gtk_entry_set_text(GTK_ENTRY(application->entry_version), "");
+	gtk_entry_set_text(GTK_ENTRY(application->entry_registre_key), "");
     gtk_file_chooser_unselect_all(GTK_FILE_CHOOSER(application->bouton_fichier));
     gtk_combo_box_set_active(GTK_COMBO_BOX(application->combo_box), -1);
 }
