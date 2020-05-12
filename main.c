@@ -10,6 +10,8 @@ int main(int argc, char *argv[])
 {
     int compteur = 0;
 
+    app application;
+
     /* Initialisation de la librairie GTK. */
     gtk_init(&argc, &argv);
 
@@ -86,7 +88,7 @@ int main(int argc, char *argv[])
     /* Signaux  */
     g_signal_connect(application.window, "destroy", G_CALLBACK(gtk_main_quit), NULL);
     g_signal_connect(application.bouton_quitter, "clicked", G_CALLBACK(gtk_main_quit), NULL);
-    g_signal_connect(application.bouton_update, "clicked", G_CALLBACK(update_fonction), NULL);
+    g_signal_connect(application.bouton_update, "clicked", G_CALLBACK(update_fonction), &application);
 
     g_signal_connect(G_OBJECT(application.entry_version), "insert-text", G_CALLBACK(insert_text_event), NULL);
 

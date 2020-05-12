@@ -50,11 +50,13 @@ int id_to_name(char* nom)
     return -1;
 }
 
-void cleaner()
+void cleaner(gpointer data)
 {
-    gtk_entry_set_text(GTK_ENTRY(application.entry_version), "");
-    gtk_file_chooser_unselect_all(GTK_FILE_CHOOSER(application.bouton_fichier));
-    gtk_combo_box_set_active(GTK_COMBO_BOX(application.combo_box), -1);
+    app* application = data;
+
+    gtk_entry_set_text(GTK_ENTRY(application->entry_version), "");
+    gtk_file_chooser_unselect_all(GTK_FILE_CHOOSER(application->bouton_fichier));
+    gtk_combo_box_set_active(GTK_COMBO_BOX(application->combo_box), -1);
 }
 
 gboolean creation_folder_conf()
@@ -84,7 +86,7 @@ gboolean creation_fichier_conf()
     return TRUE;
 }
 
-void update_fonction()
+void update_fonction(GtkWidget* bouton, gpointer data)
 {
     gchar* tampon_fichier = NULL;
     gchar* tampon_application = NULL;
@@ -93,6 +95,8 @@ void update_fonction()
     const gchar* tampon_entry_version;
     const gchar* tampon_entry_registre;
 
+    app* application = data;
+
     int id = 0;
 
     if(initialisation() != TRUE)
@@ -100,29 +104,29 @@ void update_fonction()
         return;
     }
 
-    tampon_fichier          = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(application.bouton_fichier));
-    tampon_entry_version    = gtk_entry_get_text(GTK_ENTRY(application.entry_version));
-    tampon_entry_registre   = gtk_entry_get_text(GTK_ENTRY(application.entry_registre_key));
-    tampon_application      = gtk_combo_box_text_get_active_text(GTK_COMBO_BOX_TEXT(application.combo_box));
+    tampon_fichier          = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(application->bouton_fichier));
+    tampon_entry_version    = gtk_entry_get_text(GTK_ENTRY(application->entry_version));
+    tampon_entry_registre   = gtk_entry_get_text(GTK_ENTRY(application->entry_registre_key));
+    tampon_application      = gtk_combo_box_text_get_active_text(GTK_COMBO_BOX_TEXT(application->combo_box));
 
     if(tampon_fichier == NULL)
     {
-        label_en_rouge(application.label, "Merci de choisir un fichier");
+        label_en_rouge(application->label, "Merci de choisir un fichier");
         return;
     }
     else if(strcmp(tampon_entry_version,"") == 0)
     {
-        label_en_rouge(application.label, "Merci de saisir une version");
+        label_en_rouge(application->label, "Merci de saisir une version");
         return;
     }
     else if(strcmp(tampon_entry_registre,"") == 0)
     {
-        label_en_rouge(application.label, "Merci de saisir une cle de registre");
+        label_en_rouge(application->label, "Merci de saisir une cle de registre");
         return;
     }
     else if(tampon_application == NULL)
     {
-        label_en_rouge(application.label, "Merci de choisir une application");
+        label_en_rouge(application->label, "Merci de choisir une application");
         return;
     }
 
@@ -147,7 +151,7 @@ void update_fonction()
     update_db_server_exe(id, tampon_exe);
     update_db_server_reg(id, (gchar*)tampon_entry_registre);
 
-    cleaner();
+    cleaner(data);
 
     g_free(tampon_fichier);
     g_free(tampon_application);

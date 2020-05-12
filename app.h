@@ -52,6 +52,4 @@ typedef struct
 static char tableau_id[nombre_element][TAILLE_MAX] = {"Novetat","Update","VLC","7zip", "Notepad++", "Gimp", "LibreOffice", "FileZilla", "OpenShot", "InnoSetup", "Git"};
 static char pool_id[nombre_element][TAILLE_MAX] = {"pool/Novetat.exe","pool/update.exe", "pool/vlc_x64.exe", "pool/zip_x64.exe", "pool/note_x64.exe", "pool/gimp_x64.exe", "pool/libreoffice_x64.msi", "pool/filezilLa_x64.exe", "pool/openshot_x64.exe", "pool/innosetup_x64.exe", "pool/git_x64.exe"};
 
-app application;
-
 #endif // APP_H_INCLUDED

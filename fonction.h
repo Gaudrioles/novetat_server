@@ -1,8 +1,8 @@
 #ifndef FONCTION_H_INCLUDED
 #define FONCTION_H_INCLUDED
 
-void cleaner();
-void update_fonction();
+void cleaner(gpointer data);
+void update_fonction(GtkWidget* bouton, gpointer data);
 void insert_text_event(GtkEditable *editable, const gchar* texte, int longueur);
 void label_en_blanc(GtkWidget* label, char* texte);
 

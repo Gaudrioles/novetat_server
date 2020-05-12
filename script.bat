@@ -5,7 +5,7 @@ title DLL EXPORT
 color 6F
 
 set REPERTOIRE_SRC=C:\msys64\mingw64
-set REPERTOIRE_DEST=D:\CodeBlocksProjets\framboise_server\bin\Release
+set REPERTOIRE_DEST=D:\CodeBlocksProjets\novetat_server\bin\Release
 @echo off
 
 mkdir %REPERTOIRE_DEST%\lib
